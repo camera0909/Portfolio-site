@@ -20,6 +20,29 @@
   <link href="https://fonts.googleapis.com/css2?family=Nothing+You+Could+Do&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Signika:wght@400;700&display=swap" rel="stylesheet">
   <!-- End - Fonts -->
+  <script>
+    
+    document.addEventListener('contextmenu', (event) => {
+        event.preventDefault();
+    });
+
+    
+    document.addEventListener('keydown', (event) => {
+        if (event.ctrlKey && (event.key === 's' || event.key === 'u' || event.key === 'p')) {
+            event.preventDefault();
+        }
+        if (event.key === 'F12') {
+            event.preventDefault();
+        }
+    });
+
+    
+    document.addEventListener('dragstart', (event) => {
+        if (event.target.nodeName === 'IMG') {
+            event.preventDefault();
+        }
+    });
+  </script>
 </head>
 
 <body
