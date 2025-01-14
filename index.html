@@ -380,6 +380,18 @@
 
     if (isMobileDevice()) {
       document.addEventListener('contextmenu', (event) => event.preventDefault());
+
+      document.querySelectorAll('a > img').forEach((img) => {
+        img.parentElement.addEventListener('click', (event) => {
+          event.preventDefault();
+        });
+      });
+
+      document.querySelectorAll('img').forEach((img) => {
+        img.addEventListener('click', (event) => {
+          event.preventDefault();
+        });
+      });
     }
   </script>
 </body>
