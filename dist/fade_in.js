@@ -11,4 +11,9 @@ document.addEventListener("DOMContentLoaded", function () {
     }, delay);
     delay += 100;
   });
+  document.addEventListener('contextmenu', (event) => {
+    if (event.target.tagName === 'IMG') {
+      event.preventDefault();
+    }
+  });
 });
