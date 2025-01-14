@@ -381,16 +381,32 @@
     if (isMobileDevice()) {
       document.addEventListener('contextmenu', (event) => event.preventDefault());
 
-      document.querySelectorAll('a > img').forEach((img) => {
-        img.parentElement.addEventListener('click', (event) => {
-          event.preventDefault();
+      const handleLongPress = (element) => {
+        let pressTimer;
+        
+        element.addEventListener('touchstart', () => {
+          pressTimer = setTimeout(() => {
+            event.preventDefault();
+          }, 500);
         });
+
+        element.addEventListener('touchend', () => {
+          clearTimeout(pressTimer);
+        });
+
+        element.addEventListener('touchmove', () => {
+          clearTimeout(pressTimer);
+        });
+      };
+
+      
+      document.querySelectorAll('a > img').forEach(img => {
+        handleLongPress(img.parentElement);
       });
 
-      document.querySelectorAll('img').forEach((img) => {
-        img.addEventListener('click', (event) => {
-          event.preventDefault();
-        });
+      
+      document.querySelectorAll('img').forEach(img => {
+        handleLongPress(img);
       });
     }
   </script>
